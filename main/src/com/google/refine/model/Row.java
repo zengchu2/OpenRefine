@@ -33,6 +33,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 package com.google.refine.model;
 
+import java.io.StringReader;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
@@ -220,7 +221,7 @@ public class Row implements HasFields, Jsonizable {
     
     static public Row loadStreaming(String s, Pool pool) throws Exception {
         JsonFactory jsonFactory = new JsonFactory(); 
-        JsonParser jp = jsonFactory.createJsonParser(s);
+        JsonParser jp = jsonFactory.createParser(s);
         
         if (jp.nextToken() != JsonToken.START_OBJECT) {
             return null;
