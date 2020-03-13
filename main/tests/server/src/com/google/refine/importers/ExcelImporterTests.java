@@ -74,7 +74,7 @@ public class ExcelImporterTests extends ImporterTest {
     //private static final File xlsxFile = createSpreadsheet(true);
     private static final File xlsFile = createSpreadsheet(false);
     private static final File xlsxFile = createSpreadsheet(true);
-
+    
     @Override
     @BeforeTest
     public void init() {
@@ -249,7 +249,7 @@ public class ExcelImporterTests extends ImporterTest {
             return null;
         }
         return file;
-        
+
     }
 
 }
