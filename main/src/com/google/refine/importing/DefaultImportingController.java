@@ -56,6 +56,8 @@ import com.google.refine.importing.ImportingManager.Format;
 import com.google.refine.util.JSONUtilities;
 import com.google.refine.util.ParsingUtilities;
 
+import com.google.refine.importers.tree.TreeReaderException;
+
 public class DefaultImportingController implements ImportingController {
 
     protected RefineServlet servlet;
@@ -283,14 +285,19 @@ public class DefaultImportingController implements ImportingController {
         w.flush();
         w.close();
     }
-    
+
     static public void writeErrors(JsonGenerator writer, List<Exception> exceptions) throws IOException {
         for (Exception e : exceptions) {
             StringWriter sw = new StringWriter();
             e.printStackTrace(new PrintWriter(sw));
             
             writer.writeStartObject();
-            writer.writeStringField("message", e.getLocalizedMessage());
+            String errorMessage = e.getLocalizedMessage();
+            if(e instanceof TreeReaderException) {
+                errorMessage += "\nPlease correct the format of your input file, or choose another" +
+                        " importer type such as Line-based";
+            }
+            writer.writeStringField("message", errorMessage);
             writer.writeStringField("stack", sw.toString());
             writer.writeEndObject();
         }

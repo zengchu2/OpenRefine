@@ -219,9 +219,13 @@ abstract public class TreeImportingParserBase extends ImportingParserBase {
             // If the column add fails for any reason, we'll end up overwriting data in the first column
             assert filenameColumnIndex == 0;
         }
-        
-        XmlImportUtilities.importTreeData(treeParser, project, recordPath, rootColumnGroup, limit2, 
-                new ImportParameters(trimStrings, storeEmptyStrings, guessCellValueTypes, includeFileSources,
-                        fileSource));
+
+        try {
+            XmlImportUtilities.importTreeData(treeParser, project, recordPath, rootColumnGroup, limit2,
+                    new ImportParameters(trimStrings, storeEmptyStrings, guessCellValueTypes, includeFileSources,
+                            fileSource));
+        } catch (TreeReaderException e) {
+            exceptions.add(e);
+        }
     }
 }
