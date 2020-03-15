@@ -125,8 +125,6 @@ public class ExcelImporterTests extends ImporterTest {
         
         Assert.assertEquals(project.rows.size(), ROWS);
         Assert.assertEquals(project.rows.get(1).cells.size(), COLUMNS);
-        Assert.assertEquals(project.columnModel.columns.size(), COLUMNS);
-
         Assert.assertEquals(((Number)project.rows.get(1).getCellValue(0)).doubleValue(),1.1, EPSILON);
         Assert.assertEquals(((Number)project.rows.get(2).getCellValue(0)).doubleValue(),2.2, EPSILON);
 
@@ -136,7 +134,6 @@ public class ExcelImporterTests extends ImporterTest {
         Assert.assertEquals((String)project.rows.get(1).getCellValue(4)," Row 1 Col 5");
         Assert.assertNull((String)project.rows.get(1).getCellValue(5));
 
-        // We will read SHEETS sheets from created xls file.
         verify(options, times(1)).get("ignoreLines");
         verify(options, times(1)).get("headerLines");
         verify(options, times(1)).get("skipDataLines");
@@ -167,8 +164,6 @@ public class ExcelImporterTests extends ImporterTest {
         
         Assert.assertEquals(project.rows.size(), ROWS);
         Assert.assertEquals(project.rows.get(1).cells.size(), COLUMNS);
-        Assert.assertEquals(project.columnModel.columns.size(), COLUMNS);
-
         Assert.assertEquals(((Number)project.rows.get(1).getCellValue(0)).doubleValue(),1.1, EPSILON);
         Assert.assertEquals(((Number)project.rows.get(2).getCellValue(0)).doubleValue(),2.2, EPSILON);
 
@@ -178,7 +173,6 @@ public class ExcelImporterTests extends ImporterTest {
         Assert.assertEquals((String)project.rows.get(1).getCellValue(4)," Row 1 Col 5");
         Assert.assertNull((String)project.rows.get(1).getCellValue(5));
 
-        // We will read SHEETS sheets from created xls file.
         verify(options, times(1)).get("ignoreLines");
         verify(options, times(1)).get("headerLines");
         verify(options, times(1)).get("skipDataLines");
