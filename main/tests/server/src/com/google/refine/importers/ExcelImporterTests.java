@@ -304,8 +304,8 @@ public class ExcelImporterTests extends ImporterTest {
                 c.setCellValue(" Row " + row + " Col " + col); // string
 
                 c = r.createCell(col++);
-                c.setCellValue(""); 
-				
+                c.setCellValue(""); // string
+
                 //            HSSFHyperlink hl = new HSSFHyperlink(HSSFHyperlink.LINK_URL);
                 //            hl.setLabel(cellData.text);
                 //            hl.setAddress(cellData.link);
@@ -326,6 +326,7 @@ public class ExcelImporterTests extends ImporterTest {
             return null;
         }
         return file;
+		
     }
  
    private static File createSheetsWithDifferentColumns(boolean xml) {
