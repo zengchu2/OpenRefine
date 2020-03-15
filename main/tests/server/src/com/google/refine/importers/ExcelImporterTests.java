@@ -180,6 +180,7 @@ public class ExcelImporterTests extends ImporterTest {
         verify(options, times(1)).get("storeBlankCellsAsNulls");
     }
 
+	
     @Test
     public void readMultiSheetXls() throws FileNotFoundException, IOException{
 
@@ -303,7 +304,8 @@ public class ExcelImporterTests extends ImporterTest {
                 c.setCellValue(" Row " + row + " Col " + col); // string
 
                 c = r.createCell(col++);
-                c.setCellValue(""); // string
+                c.setCellValue(""); 
+				
                 //            HSSFHyperlink hl = new HSSFHyperlink(HSSFHyperlink.LINK_URL);
                 //            hl.setLabel(cellData.text);
                 //            hl.setAddress(cellData.link);
@@ -361,9 +363,6 @@ public class ExcelImporterTests extends ImporterTest {
                     c = r.createCell(col++);
                     c.setCellValue(i + s);
                 }
-                //            HSSFHyperlink hl = new HSSFHyperlink(HSSFHyperlink.LINK_URL);
-                //            hl.setLabel(cellData.text);
-                //            hl.setAddress(cellData.link);
             }
 
         }
