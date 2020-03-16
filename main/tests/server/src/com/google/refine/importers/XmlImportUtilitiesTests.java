@@ -141,7 +141,7 @@ public class XmlImportUtilitiesTests extends RefineTest {
         try {
             response = SUT.detectRecordElementWrapper(parser, tag);
         } catch (Exception e) {
-            fail(e.getMessage());
+            Assert.fail(e.getMessage());
         }
         Assert.assertNotNull(response);
         Assert.assertEquals(response.size(), 1);
@@ -159,7 +159,7 @@ public class XmlImportUtilitiesTests extends RefineTest {
         try {
             response = SUT.detectRecordElementWrapper(parser, tag);
         } catch (Exception e) {
-            fail(e.getMessage());
+            Assert.fail(e.getMessage());
         }
         Assert.assertNotNull(response);
         Assert.assertEquals(response.size(), 2);
@@ -178,7 +178,7 @@ public class XmlImportUtilitiesTests extends RefineTest {
         try {
             response = SUT.detectRecordElementWrapper(parser, tag);
         } catch (Exception e) {
-            fail(e.getMessage());
+            Assert.fail(e.getMessage());
         }
         Assert.assertNull(response);
     }
@@ -215,7 +215,7 @@ public class XmlImportUtilitiesTests extends RefineTest {
             XmlImportUtilitiesStub.importTreeData(createXmlParser(), project, recordPath, columnGroup, -1,
                     new ImportParameters(false, true, false));
         } catch (Exception e){
-            fail();
+            Assert.fail();
         }
         log(project);
         assertProjectCreated(project, 0, 6);
@@ -239,7 +239,7 @@ public class XmlImportUtilitiesTests extends RefineTest {
             XmlImportUtilitiesStub.importTreeData(createXmlParser(), project, recordPath, columnGroup, -1,
                     new ImportParameters(false, true, false));
         } catch (Exception e){
-            fail();
+            Assert.fail();
         }
         log(project);
         assertProjectCreated(project, 0, 6);
@@ -295,7 +295,7 @@ public class XmlImportUtilitiesTests extends RefineTest {
             SUT.findRecordWrapper(project, parser, recordPath, pathIndex, columnGroup,
                     false, false, false);
         } catch (Exception e) {
-            fail();
+            Assert.fail();
         }
 
         log(project);
@@ -314,7 +314,7 @@ public class XmlImportUtilitiesTests extends RefineTest {
         try {
             SUT.processRecordWrapper(project, parser, columnGroup, false, false, false);
         } catch (Exception e) {
-            fail();
+            Assert.fail();
         }
         log(project);
         Assert.assertNotNull(project.rows);
@@ -335,7 +335,7 @@ public class XmlImportUtilitiesTests extends RefineTest {
         try {
             SUT.processRecordWrapper(project, parser, columnGroup, false, false, false);
         } catch (Exception e) {
-            fail();
+            Assert.fail();
         }
         log(project);
         Assert.assertNotNull(project.rows);
@@ -360,7 +360,7 @@ public class XmlImportUtilitiesTests extends RefineTest {
         try {
             SUT.processRecordWrapper(project, parser, columnGroup, false, false, false);
         } catch (Exception e) {
-            fail();
+            Assert.fail();
         }
         log(project);
         Assert.assertNotNull(project.rows);
@@ -385,7 +385,7 @@ public class XmlImportUtilitiesTests extends RefineTest {
             SUT.ProcessSubRecordWrapper(project, parser, columnGroup, record,0, 
                     new ImportParameters(false, false, false));
         } catch (Exception e) {
-            fail();
+            Assert.fail();
         }
         log(project);
 
@@ -440,7 +440,7 @@ public class XmlImportUtilitiesTests extends RefineTest {
         try {
             inputStream = new ByteArrayInputStream( xml.getBytes( "UTF-8" ) );
         } catch (UnsupportedEncodingException e1) {
-            fail();
+            Assert.fail();
         }
     }
 
@@ -450,7 +450,7 @@ public class XmlImportUtilitiesTests extends RefineTest {
                 parser.next(); //move parser forward once e.g. skip the START_DOCUMENT parser event
             }
         } catch (Exception e1) {
-            fail();
+            Assert.fail();
         }
     }
 
