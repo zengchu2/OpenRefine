@@ -132,6 +132,7 @@ public class ImportingUtilities {
                 }
             );
         } catch (Exception e) {
+            System.out.println(e);
             JSONUtilities.safePut(config, "state", "error");
             JSONUtilities.safePut(config, "error", "Error uploading data");
             JSONUtilities.safePut(config, "errorDetails", e.getLocalizedMessage());
@@ -195,6 +196,7 @@ public class ImportingUtilities {
         DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
         
         ServletFileUpload upload = new ServletFileUpload(fileItemFactory);
+        System.out.println(request);
         upload.setProgressListener(new ProgressListener() {
             boolean setContentLength = false;
             long lastBytesRead = 0;
@@ -217,9 +219,11 @@ public class ImportingUtilities {
             }
         });
 
+        System.out.println("Before parseRequest");
         @SuppressWarnings("unchecked")
         List<FileItem> tempFiles = (List<FileItem>)upload.parseRequest(request);
-        
+        System.out.println("1");
+
         progress.setProgress("Uploading data ...", -1);
         parts: for (FileItem fileItem : tempFiles) {
             if (progress.isCanceled()) {
@@ -227,9 +231,11 @@ public class ImportingUtilities {
             }
             
             InputStream stream = fileItem.getInputStream();
-            
+            System.out.println(stream);
             String name = fileItem.getFieldName().toLowerCase();
+
             if (fileItem.isFormField()) {
+                System.out.println(name);
                 if (name.equals("clipboard")) {
                     String encoding = request.getCharacterEncoding();
                     if (encoding == null) {
@@ -256,8 +262,9 @@ public class ImportingUtilities {
                     
                 } else if (name.equals("download")) {
                     String urlString = Streams.asString(stream);
+                    System.out.println(urlString);
                     URL url = new URL(urlString);
-                    
+                    System.out.println(url);
                     ObjectNode fileRecord = ParsingUtilities.mapper.createObjectNode();
                     JSONUtilities.safePut(fileRecord, "origin", "download");
                     JSONUtilities.safePut(fileRecord, "url", urlString);
@@ -383,15 +390,17 @@ public class ImportingUtilities {
                     uploadCount++;
                 }
             }
-            
+            System.out.println("Close Stream");
             stream.close();
         }
-        
+        System.out.println("2");
+
         // Delete all temp files.
         for (FileItem fileItem : tempFiles) {
             fileItem.delete();
         }
-        
+        System.out.println("3");
+
         JSONUtilities.safePut(retrievalRecord, "uploadCount", uploadCount);
         JSONUtilities.safePut(retrievalRecord, "downloadCount", downloadCount);
         JSONUtilities.safePut(retrievalRecord, "clipboardCount", clipboardCount);

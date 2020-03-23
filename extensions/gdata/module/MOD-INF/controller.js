@@ -47,18 +47,17 @@ var ClientSideResourceManager = Packages.com.google.refine.ClientSideResourceMan
  * Function invoked to initialize the extension.
  */
 function init() {
-  var RS = Packages.com.google.refine.RefineServlet;
-  RS.registerCommand(module, "deauthorize", Packages.com.google.refine.extension.gdata.DeAuthorizeCommand());
-  RS.registerCommand(module, "upload", Packages.com.google.refine.extension.gdata.UploadCommand());
-
+//  var RS = Packages.com.google.refine.RefineServlet;
+//  RS.registerCommand(module, "deauthorize", Packages.com.google.refine.extension.gdata.DeAuthorizeCommand());
+//  RS.registerCommand(module, "upload", Packages.com.google.refine.extension.gdata.UploadCommand());
   // Register importer and exporter
-  var IM = Packages.com.google.refine.importing.ImportingManager;
-  
-  IM.registerController(
-    module,
-    "gdata-importing-controller",
-    new Packages.com.google.refine.extension.gdata.GDataImportingController()
-  );
+//  var IM = Packages.com.google.refine.importing.ImportingManager;
+//  alert("GDATA INIT");
+//  IM.registerController(
+//    module,
+//    "gdata-importing-controller",
+//    new Packages.com.google.refine.extension.gdata.GDataImportingController()
+//  );
   
   // Script files to inject into /index page
   ClientSideResourceManager.addPaths(

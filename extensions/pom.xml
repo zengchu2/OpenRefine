@@ -24,7 +24,8 @@
         <module>gdata</module>
         <module>pc-axis</module>
         <module>phonetic</module>
-        <!-- Add new extensions here -->
+<!--        <module>spaqrl</module>-->
+      <!-- Add new extensions here -->
   </modules>
 
   <build>

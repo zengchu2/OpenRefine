@@ -53,9 +53,7 @@ $.i18n().load(dictionary, lang);
 
 Refine.GDataImportingController = function(createProjectUI) {
   this._createProjectUI = createProjectUI;
-  
   this._parsingPanel = createProjectUI.addCustomPanel();
-
   createProjectUI.addSourceSelectionUI({
     label: "Google Data",
     id: "gdata-source",

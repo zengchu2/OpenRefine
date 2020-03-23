@@ -137,3 +137,48 @@ ClipboardImportingSourceUI.prototype.focus = function() {
   this._elmts.textInput.focus();
 };
 
+
+var requestPrefix = "https://query.wikidata.org/sparql?query="; 
+
+function SpaqrlSourceUI(controller) {
+  this._controller = controller;
+};
+
+Refine.DefaultImportingController.sources.push({
+  "label": "SPAQRL Import",
+  "id": "spaqrl",
+  "uiClass": SpaqrlSourceUI
+});
+
+SpaqrlSourceUI.prototype.attachUI = function(bodyDiv) {
+  var self = this;
+  bodyDiv.html(DOM.loadHTML("core", "scripts/index/default-importing-sources/import-from-spaqrl.html"));
+
+  this._elmts = DOM.bind(bodyDiv);
+
+  $('#or-import-spaqrl').text("Please Input Your SPAQRL query");
+  $('#spaqrl-next').html("Next");
+  
+  
+  var self = this;
+  this._elmts.spaqrlQuery.hide();
+  this._elmts.nextButton.click(function(evt) {
+    console.log($('#default-importing-spaqrl-textarea'));
+    var url = $.trim($('#default-importing-spaqrl-textarea')[0].value);
+    // The requested fetch url.
+    var request = requestPref escape(url);
+    self._elmts.spaqrlQuery.text(request);
+    console.log(request);
+ 
+    if (url.length === 0) {
+      // May also want to check if the query is valid here.
+      window.alert($.i18n("Invalid"));
+    } else {
+      self._controller.startImportJob(self._elmts.form, console.log);
+    }
+  });
+
+};
+
+SpaqrlSourceUI.prototype.focus = function() {
+};

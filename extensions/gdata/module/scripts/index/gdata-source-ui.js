@@ -37,7 +37,6 @@ Refine.GDataSourceUI = function(controller) {
 
 Refine.GDataSourceUI.prototype.attachUI = function(body) {
   this._body = body;
-  
   this._body.html(DOM.loadHTML("gdata", "scripts/index/import-from-gdata-form.html"));
   this._elmts = DOM.bind(this._body);
   

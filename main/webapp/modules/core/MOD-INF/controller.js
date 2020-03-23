@@ -527,6 +527,8 @@ function init() {
       "styles/reconciliation/recon-dialog.less",
       "styles/reconciliation/standard-service-panel.less",
       "styles/reconciliation/extend-data-preview-dialog.less",
+      
+      "styles/index/spaqrl-importer.css"
     ]
   );
 
